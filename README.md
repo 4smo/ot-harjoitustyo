@@ -6,4 +6,4 @@ Tässä harjoitustyössä olen kehittämässä **Pythonilla toteutettua** *sovel
 
 [vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
 
-[Tuntikirjanpito](./dokumentaati/tuntikirjanpito.md)
+[Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
