@@ -5,3 +5,5 @@ Tässä harjoitustyössä olen kehittämässä **Pythonilla toteutettua** *sovel
 [Laskarit](./laskarit)
 
 [vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
+
+[Tuntikirjanpito](./dokumentaati/tuntikirjanpito.md)
