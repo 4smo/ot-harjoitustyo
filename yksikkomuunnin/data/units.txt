@@ -1,0 +1,8 @@
+# generoitu koodi alkaa
+# Yksikkö;Kerroin perusyksikköön (metri)
+m;1.0
+km;1000.0
+maili;1609.34
+ft;0.3048
+tuuma;0.0254
+ # generoitu koodi päättyy
