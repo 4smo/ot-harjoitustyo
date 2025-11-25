@@ -4,7 +4,8 @@ Sovelluksen avulla käyttäjä voi muuntaa arvoja eri mittayksiköiden välillä
 
 ## Dokumentaatio
 
-[vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
+[Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
 [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
 
 # Asennus
@@ -52,3 +53,11 @@ poetry run invoke coverage-report
 ```
 
 Tämä luo selaimella avattavan raportin `htmlcov/`-hakemistoon.
+
+## Pylint-tarkistus
+
+Pylint-tarkistuksien suorittamista varten on toteutettu Invoke-tehtävä, jonka voi suorittaa komennolla:
+
+```bash
+poetry run invoke lint
+```
