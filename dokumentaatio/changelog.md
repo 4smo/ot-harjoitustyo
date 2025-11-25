@@ -11,3 +11,14 @@
 - Otettu käyttöön unittest sovelluksen testaamiseen.
 - Toteutettu integraatiotesti ConversionService.
 - Lisätty invoke-tehtävät projektin käynnistystä, testausta ja testikattavuutta varten.
+
+## Viikko 4
+
+- Toteutettu kategoriakohtainen yksikköjärjestelmä
+- Lisätty erikoislogiikka lämpötilamuunnoksille
+- Lisätty validointi estämään eri kategorioiden välisiä muunnoksia
+- Tuetut massayksiköt: g, kg, lb, oz
+- Tuetut lämpötilayksiköt: celsius, fahrenheit, kelvin  
+- Tuetut aikayksiköt: s, min, h, d
+- Luotu luokkakaavio sovelluslogiikan luokista
+- Otettu käyttöön Pylint ja luotu sitä varten Invoke-tehtävä

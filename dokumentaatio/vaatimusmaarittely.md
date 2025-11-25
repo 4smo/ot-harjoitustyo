@@ -20,23 +20,23 @@ Ohjelmassa ei ole kirjautumista tai käyttäjätilejä, sillä se on yksinkertai
 ## Suunnitellut toiminnallisuudet
 
 ### Perusversion toiminnallisuudet
-- Käyttäjä voi muuntaa arvoja eri yksikköjen välillä seuraavissa kategorioissa:
-  - Pituus (esim. metri, kilometri, maili, jalka, tuuma)
-  - Massa (esim. gramma, kilogramma, pauna, unssi)
-  - Lämpötila (esim. celsius, fahrenheit, kelvin)
-  - Aika (esim. sekunti, minuutti, tunti, päivä)
-- Käyttäjä voi valita muunnoksen esimerkiksi seuraavassa muodossa:  
+- **TEHTY** - Käyttäjä voi muuntaa arvoja eri yksikköjen välillä seuraavissa kategorioissa:
+  - **TEHTY** - Pituus (esim. metri, kilometri, maili, jalka, tuuma)
+  - **TEHTY** - Massa (esim. gramma, kilogramma, pauna, unssi)
+  - **TEHTY** - Lämpötila (esim. celsius, fahrenheit, kelvin)
+  - **TEHTY** - Aika (esim. sekunti, minuutti, tunti, päivä)
+- **TEHTY** - Käyttäjä voi valita muunnoksen esimerkiksi seuraavassa muodossa:  
   `convert 10 m to ft` → tulos: `32.8084 ft`
-- Käyttäjä voi pyytää ohjelmalta listauksen tuetuista yksiköistä  
+- **TEHTY** - Käyttäjä voi pyytää ohjelmalta listauksen tuetuista yksiköistä  
   `list length` → näyttää kaikki pituusyksiköt
-- Ohjelma tunnistaa virheelliset syötteet ja ilmoittaa käyttäjälle niistä selkeästi  
-  (esim. “Tuntematon yksikkö: metrii”)
-- Ohjelma toimii ilman graafista käyttöliittymää, eli käyttö tapahtuu komentorivin tai tekstipohjaisen valikon kautta
+- **TEHTY** - Ohjelma tunnistaa virheelliset syötteet ja ilmoittaa käyttäjälle niistä selkeästi  
+  (esim. "Tuntematon yksikkö: metrii")
+- **TEHTY** - Ohjelma toimii ilman graafista käyttöliittymää, eli käyttö tapahtuu komentorivin tai tekstipohjaisen valikon kautta
 
 ---
 
 ### Tiedostonkäsittely ja tietojen säilytys
-- Ohjelma lukee oletuksena tuetut yksiköt tiedostosta `units.txt`
+- **TEHTY** - Ohjelma lukee oletuksena tuetut yksiköt tiedostosta `units.txt`
 - Käyttäjä voi lisätä omia yksikkömuunnoksia samaan tiedostoon muodossa:
   - 1 maili = 1609.34 metriä
   - 1 jalka = 0.3048 metriä

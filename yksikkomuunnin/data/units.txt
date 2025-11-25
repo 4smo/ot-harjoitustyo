@@ -1,8 +1,26 @@
 # generoitu koodi alkaa
-# Yksikkö;Kerroin perusyksikköön (metri)
-m;1.0
-km;1000.0
-maili;1609.34
-ft;0.3048
-tuuma;0.0254
- # generoitu koodi päättyy
+# Pituusyksiköt - Yksikkö;Kerroin perusyksikköön (metri)
+length:m;1.0
+length:km;1000.0
+length:maili;1609.34
+length:ft;0.3048
+length:tuuma;0.0254
+
+# Massayksiköt - Yksikkö;Kerroin perusyksikköön (gramma)
+mass:g;1.0
+mass:kg;1000.0
+mass:lb;453.592
+mass:oz;28.3495
+
+# Lämpötilayksiköt - Yksikkö;Tyyppi (celsius perusyksikkö)
+temp:celsius;0
+temp:fahrenheit;1
+temp:kelvin;2
+
+# Aikayksiköt - Yksikkö;Kerroin perusyksikköön (sekunti)
+time:s;1.0
+time:min;60.0
+time:h;3600.0
+time:d;86400.0
+# generoitu koodi päättyy
+

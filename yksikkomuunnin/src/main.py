@@ -3,6 +3,7 @@ from repositories.unit_repository import UnitRepository
 from services.conversion_service import ConversionService
 from ui.text_ui import TextUI
 
+
 def main():
     """Sovelluksen pääfunktio"""
 
@@ -21,6 +22,7 @@ def main():
 
     # Käynnistetään sovellus
     ui.start()
+
 
 if __name__ == "__main__":
     main()

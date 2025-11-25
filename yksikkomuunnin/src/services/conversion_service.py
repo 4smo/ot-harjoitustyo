@@ -8,15 +8,55 @@ class ConversionService:
         """
         Muuntaa arvon yksiköstä toiseen
         """
-        from_factor = self._repository.get_factor(from_unit)
-        if from_factor is None:
+        # Tarkista että yksiköt ovat olemassa
+        from_category = self._repository.get_unit_category(from_unit)
+        to_category = self._repository.get_unit_category(to_unit)
+
+        if from_category is None:
             raise ValueError(f"Tuntematon yksikkö: '{from_unit}'")
-
-        to_factor = self._repository.get_factor(to_unit)
-        if to_factor is None:
+        if to_category is None:
             raise ValueError(f"Tuntematon yksikkö: '{to_unit}'")
+        if from_category != to_category:
+            raise ValueError(
+                f"Eri kategorioiden yksiköitä ei voi muuntaa: '{from_unit}' ({from_category}) -> '{to_unit}' ({to_category})")
 
-        # Suoritetaan muunnos perusyksikön (metri) avulla
-        value_in_meters = value * from_factor
-        result = value_in_meters / to_factor
+        # Käsittele lämpötilamuunnokset erikseen
+        if from_category == 'temp':
+            return self._convert_temperature(value, from_unit, to_unit)
+
+        # Lineaariset muunnokset (pituus, massa, aika)
+        from_factor = self._repository.get_factor(from_unit)
+        to_factor = self._repository.get_factor(to_unit)
+
+        # Muunnos perusyksikön kautta
+        value_in_base = value * from_factor
+        result = value_in_base / to_factor
         return result
+
+    def _convert_temperature(self, value, from_unit, to_unit):
+        """Käsittelee lämpötilamuunnokset."""
+        # Muunna ensin celsiuksiksi
+        if from_unit == 'fahrenheit':
+            celsius = (value - 32) * 5/9
+        elif from_unit == 'kelvin':
+            celsius = value - 273.15
+        else:  # celsius
+            celsius = value
+
+        # Muunna celsiuksesta kohdeyksilköön
+        if to_unit == 'fahrenheit':
+            return celsius * 9/5 + 32
+        elif to_unit == 'kelvin':
+            return celsius + 273.15
+        else:  # celsius
+            return celsius
+
+    def get_supported_units(self, category=None):
+        """Palauttaa tuetut yksiköt kategoriittain."""
+        if category:
+            return list(self._repository.get_units_by_category(category).keys())
+        return self._repository.get_all_unit_symbols()
+
+    def get_all_categories(self):
+        """Palauttaa kaikki kategoriat."""
+        return self._repository.get_all_categories()
