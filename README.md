@@ -7,6 +7,7 @@ Sovelluksen avulla käyttäjä voi muuntaa arvoja eri mittayksiköiden välillä
 [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
 [Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
 [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
+[Viikon 5 release](https://github.com/4smo/ot-harjoitustyo/releases/tag/viikko5)
 
 # Asennus
 
