@@ -22,3 +22,12 @@
 - Tuetut aikayksiköt: s, min, h, d
 - Luotu luokkakaavio sovelluslogiikan luokista
 - Otettu käyttöön Pylint ja luotu sitä varten Invoke-tehtävä
+
+## Viikko 5
+
+- Lisätty käyttäjän omien yksiköiden lisääminen
+  - Uusi `add` -komento: `add [kategoria]:[yksikkö];[kerroin]` (esim. `add length:yard;0.9144`)
+  - Uudet yksiköt tallentuvat automaattisesti `units.txt`-tiedostoon
+  - Validointi estää tuntemattomien kategorioiden käytön ja duplikaattien lisäämisen
+- Lisätty sekvenssikaavio yksikkömuunnoksesta
+- Korjattu Pylint-virheitä

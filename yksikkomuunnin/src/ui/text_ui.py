@@ -15,6 +15,8 @@ class TextUI:
             "  convert [arvo] [yksikkö] to [yksikkö]  (esim. convert 10 m to ft)")
         print(
             "  list [kategoria]                      (esim. list mass, tai list kaikille)")
+        print(
+            "  add [kategoria]:[yksikkö];[kerroin]   (esim. add length:yard;0.9144)")
         print("  exit                                   (lopettaa ohjelman)")
 
         while True:
@@ -26,6 +28,10 @@ class TextUI:
 
             if command_input.lower().startswith("list"):
                 self._handle_list_command(command_input)
+                continue
+
+            if command_input.lower().startswith("add "):
+                self._handle_add_command(command_input)
                 continue
 
             parts = command_input.split()
@@ -81,4 +87,37 @@ class TextUI:
 
         except ValueError as e:
             print(f"Virhe: {e}")
+
+    def _handle_add_command(self, command_input):
+        """Käsittelee add-komennon uuden yksikön lisäämiseksi."""
+        parts = command_input.split(maxsplit=1)
+
+        if len(parts) != 2:
+            print("Käytä: 'add [kategoria]:[yksikkö];[kerroin]' (esim. add length:yard;0.9144)")
+            return
+
+        unit_definition = parts[1]
+
+        # Parsitaan kategoria:yksikkö;kerroin
+        if ':' not in unit_definition or ';' not in unit_definition:
+            print("Virheellinen muoto. Käytä: 'add [kategoria]:[yksikkö];[kerroin]'")
+            return
+
+        try:
+            category_unit, factor_str = unit_definition.split(';')
+            category, unit_symbol = category_unit.split(':')
+            factor = float(factor_str)
+
+            success = self._repository.add_unit(category, unit_symbol, factor)
+
+            if success:
+                print(f"Yksikkö '{unit_symbol}' lisätty kategoriaan '{category}' kertoimella {factor}")
+            else:
+                print(f"Yksikkö '{unit_symbol}' on jo olemassa")
+
+        except ValueError as e:
+            if "Tuntematon kategoria" in str(e):
+                print(str(e))
+            else:
+                print("Virheellinen kerroin. Käytä desimaalilukua (esim. 0.9144)")
 # generoitu koodi päättyy

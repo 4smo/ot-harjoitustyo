@@ -1,6 +1,3 @@
-import os
-
-
 class UnitRepository:
     """Lukee yksiköt tiedostosta units.txt."""
 
@@ -63,3 +60,46 @@ class UnitRepository:
     def get_all_categories(self):
         """Palauttaa kaikki kategoriat."""
         return list(self._categories.keys())
+    #generoitu koodi alkaa
+    def add_unit(self, category, unit_symbol, factor):
+        """Lisää uuden yksikön ja tallentaa sen tiedostoon.
+
+        Args:
+            category: Kategorian nimi (length, mass, temp, time)
+            unit_symbol: Yksikön symboli (esim. yard)
+            factor: Muuntokerroin perusyksikköön
+
+        Returns:
+            True jos lisäys onnistui, False jos yksikkö on jo olemassa
+
+        Raises:
+            ValueError: Jos kategoria on tuntematon
+        """
+        valid_categories = ['length', 'mass', 'temp', 'time']
+        if category not in valid_categories:
+            raise ValueError(f"Tuntematon kategoria: {category}")
+
+        # Tarkista onko yksikkö jo olemassa
+        if unit_symbol in self._units:
+            return False
+
+        # Lisää muistiin
+        if category not in self._categories:
+            self._categories[category] = {}
+
+        if category == 'temp':
+            self._categories[category][unit_symbol] = int(factor)
+            self._units[unit_symbol] = int(factor)
+        else:
+            self._categories[category][unit_symbol] = float(factor)
+            self._units[unit_symbol] = float(factor)
+
+        # Tallenna tiedostoon
+        self._save_unit_to_file(category, unit_symbol, factor)
+        return True
+
+    def _save_unit_to_file(self, category, unit_symbol, factor):
+        """Tallentaa uuden yksikön tiedostoon."""
+        with open(self._file_path, 'a', encoding='utf-8') as file:
+            file.write(f"\n{category}:{unit_symbol};{factor}")
+#generoitu koodi päättyy
