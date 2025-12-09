@@ -8,6 +8,8 @@
 | 25.11.| 6    | Luotu arkkitehtuuridokumentaatio luokkakaaviolla ja otettu käyttöön Pylint-laadunvarmistus|
 | 1.12.| 3    | Lisätty käyttäjän omien yksiköiden lisääminen |
 | 2.12.| 3    | Uudet yksiköt tallentuvat automaattisesti `units.txt`-tiedostoon|
+| 8.12.| 5   | Lisätty HistoryLogger-luokka, laajennettu testikattavuutta, laadittu arkkitehtuurikuvaus|
+| 9.12.| 3  | laadittu arkkitehtuurikuvaus|
 
 
-Työtuntien summa: 25h
+Työtuntien summa: 33h

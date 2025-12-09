@@ -31,3 +31,16 @@
   - Validointi estää tuntemattomien kategorioiden käytön ja duplikaattien lisäämisen
 - Lisätty sekvenssikaavio yksikkömuunnoksesta
 - Korjattu Pylint-virheitä
+
+## Viikko 6
+
+- Lisätty HistoryLogger-luokka muunnosten ja virheiden lokittamiseen
+  - Onnistuneet muunnokset tallennetaan `data/history.log`-tiedostoon
+  - Virheelliset syötteet tallennetaan lokitiedostoon aikaleimalla
+- Laajennettu testikattavuutta yli 60%:iin
+  - Lisätty testit HistoryLogger-luokalle
+  - Lisätty testit ConversionService-luokan lämpötilamuunnoksille ja virhetilanteille
+- Laadittu arkkitehtuurikuvaus
+  - Rakennekuvaus kerrosarkkitehtuurista
+  - Luokkakaavio sovelluksen luokista
+  - Sekvenssikaaviot päätoiminnallisuuksista

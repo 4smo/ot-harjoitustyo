@@ -2,9 +2,10 @@
 class TextUI:
     """Sovelluksen tekstipohjainen käyttöliittymä."""
 
-    def __init__(self, conversion_service, unit_repository):
+    def __init__(self, conversion_service, unit_repository, history_logger=None):
         self._service = conversion_service
         self._repository = unit_repository
+        self._logger = history_logger
 
     def start(self):
         """Käynnistää käyttöliittymän ja komentosilmukan."""
@@ -38,7 +39,11 @@ class TextUI:
             if len(parts) == 5 and parts[0].lower() == "convert" and parts[3].lower() == "to":
                 self._handle_conversion(parts)
             else:
-                print("Virheellinen komento. Käytä muotoa: 'convert 10 m to ft'")
+                error_msg = "Virheellinen komento. Käytä muotoa: 'convert 10 m to ft'"
+                print(error_msg)
+                # Tallenna virheellinen komento lokiin
+                if self._logger:
+                    self._logger.log_error(command_input, "Virheellinen komento")
 
     def _handle_list_command(self, command_input):
         """Käsittelee list-komennon."""
@@ -76,6 +81,7 @@ class TextUI:
 
     def _handle_conversion(self, parts):
         """Käsittelee muunnoskomennon."""
+        command = " ".join(parts)
         try:
             value = float(parts[1])
             from_unit = parts[2]
@@ -85,8 +91,15 @@ class TextUI:
 
             print(f"{value} {from_unit} = {result:.4f} {to_unit}")
 
+            # Tallenna onnistunut muunnos lokiin
+            if self._logger:
+                self._logger.log_conversion(value, from_unit, to_unit, result)
+
         except ValueError as e:
             print(f"Virhe: {e}")
+            # Tallenna virhe lokiin
+            if self._logger:
+                self._logger.log_error(command, str(e))
 
     def _handle_add_command(self, command_input):
         """Käsittelee add-komennon uuden yksikön lisäämiseksi."""

@@ -40,12 +40,12 @@ Ohjelmassa ei ole kirjautumista tai käyttäjätilejä, sillä se on yksinkertai
 - **TEHTY** Käyttäjä voi lisätä omia yksikkömuunnoksia samaan tiedostoon muodossa:
   - 1 maili = 1609.34 metriä
   - 1 jalka = 0.3048 metriä
-- Ohjelma tallentaa virheelliset syötteet ja viimeisimmät muunnokset lokitiedostoon `history.log`  
+- **TEHTY** Ohjelma tallentaa virheelliset syötteet ja viimeisimmät muunnokset lokitiedostoon `history.log`  
 
 ---
 
 ### Jatkokehitysideat
-- Käyttäjän lisäämien yksiköiden tallennus ja hallinta ohjelman kautta (ei pelkästään tiedostosta)
+- **TEHTY* Käyttäjän lisäämien yksiköiden tallennus ja hallinta ohjelman kautta (ei pelkästään tiedostosta)
 - Mahdollisuus hakea yksikköjä ja muunnoksia hakusanoilla  
 esim. `search unit "mile"`
 - Muunnoshistoria, jota voi selata ohjelmassa (`show history`)
