@@ -45,10 +45,10 @@ Ohjelmassa ei ole kirjautumista tai käyttäjätilejä, sillä se on yksinkertai
 ---
 
 ### Jatkokehitysideat
-- **TEHTY* Käyttäjän lisäämien yksiköiden tallennus ja hallinta ohjelman kautta (ei pelkästään tiedostosta)
+- **TEHTY** Käyttäjän lisäämien yksiköiden tallennus ja hallinta ohjelman kautta (ei pelkästään tiedostosta)
 - Mahdollisuus hakea yksikköjä ja muunnoksia hakusanoilla  
 esim. `search unit "mile"`
-- Muunnoshistoria, jota voi selata ohjelmassa (`show history`)
+- **TEHTY** Muunnoshistoria, jota voi selata ohjelmassa (`show history`)
 - Tuki monimutkaisemmille muunnoksille (esim. "5 km/h to m/s")
 - Tuki useammille mittaustyypeille (tietomäärät, pinta-ala, tilavuus jne.)
 - Graafinen käyttöliittymä myöhemmässä versiossa
