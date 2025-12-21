@@ -10,6 +10,7 @@
 | 2.12.| 3    | Uudet yksiköt tallentuvat automaattisesti `units.txt`-tiedostoon|
 | 8.12.| 5   | Lisätty HistoryLogger-luokka, laajennettu testikattavuutta, laadittu arkkitehtuurikuvaus|
 | 9.12.| 3  | laadittu arkkitehtuurikuvaus|
+| 21.12.| 3  | Dokumentaatiota, lisää testejä ja palautuksen viimeistely|
 
 
-Työtuntien summa: 33h
+Työtuntien summa: 36h

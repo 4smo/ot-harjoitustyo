@@ -102,3 +102,24 @@ class TestConversionService(unittest.TestCase):
         self.assertIn("length", categories)
         self.assertIn("mass", categories)
         self.assertIn("temp", categories)
+
+    def test_convert_unknown_from_unit_raises_error(self):
+        with self.assertRaises(ValueError) as context:
+            self.service.convert(10, "unknown", "m")
+        self.assertIn("Tuntematon yksikkö: 'unknown'", str(context.exception))
+
+    def test_convert_unknown_to_unit_raises_error(self):
+        with self.assertRaises(ValueError) as context:
+            self.service.convert(10, "m", "unknown")
+        self.assertIn("Tuntematon yksikkö: 'unknown'", str(context.exception))
+
+    def test_convert_different_categories_raises_error(self):
+        with self.assertRaises(ValueError) as context:
+            self.service.convert(10, "m", "kg")
+        self.assertIn("Eri kategorioiden yksiköitä ei voi muuntaa", str(context.exception))
+
+    def test_get_supported_units_without_category(self):
+        units = self.service.get_supported_units()
+        self.assertIn("m", units)
+        self.assertIn("kg", units)
+        self.assertIn("celsius", units)

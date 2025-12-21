@@ -8,35 +8,50 @@ class UnitRepository:
         self._load_units()
 
     def _load_units(self):
-        """Lataa yksiköiden muuntokertoimet tiedostosta kategorioittain."""
-        # generoitu koodi alkaa
+        """Lataa yksiköiden muuntokertoimet tiedostosta kategorioittain.
+
+        Lukee units.txt-tiedoston ja jäsentää sen sisällön.
+        Tiedoston formaatti: kategoria:yksikkö;kerroin
+
+        Raises:
+            Tulostaa virheilmoituksen jos tiedostoa ei löydy tai se on virheellinen.
+        """
         try:
             with open(self._file_path, 'r', encoding='utf-8') as file:
                 for line in file:
-                    line = line.strip()
-                    if not line or line.startswith('#'):
-                        continue
-
-                    parts = line.split(';')
-                    if len(parts) == 2:
-                        category_unit, value = parts
-                        if ':' in category_unit:
-                            category, unit = category_unit.split(':', 1)
-
-                            if category not in self._categories:
-                                self._categories[category] = {}
-
-                            # Lämpötila käyttää tyyppiä, muut käyttävät kerrointa
-                            if category == 'temp':
-                                self._categories[category][unit] = int(value)
-                            else:
-                                self._categories[category][unit] = float(value)
-
-                            self._units[unit] = float(
-                                value) if category != 'temp' else int(value)
+                    self._parse_line(line)
         except (FileNotFoundError, ValueError) as e:
             print(f"Virhe yksikkötiedoston latauksessa: {e}")
-        # generoitu koodi päättyy
+
+    def _parse_line(self, line):
+        """Jäsentää yksittäisen rivin tiedostosta.
+
+        Args:
+            line: Tiedoston rivi muodossa 'kategoria:yksikkö;kerroin'
+        """
+        line = line.strip()
+        if not line or line.startswith('#'):
+            return
+
+        parts = line.split(';')
+        if len(parts) != 2:
+            return
+
+        category_unit, value = parts
+        if ':' not in category_unit:
+            return
+
+        category, unit = category_unit.split(':', 1)
+
+        if category not in self._categories:
+            self._categories[category] = {}
+
+        if category == 'temp':
+            self._categories[category][unit] = int(value)
+            self._units[unit] = int(value)
+        else:
+            self._categories[category][unit] = float(value)
+            self._units[unit] = float(value)
 
     def get_factor(self, unit_symbol):
         """Palauttaa yksikön muuntokertoimen."""
@@ -99,7 +114,14 @@ class UnitRepository:
         return True
 
     def _save_unit_to_file(self, category, unit_symbol, factor):
-        """Tallentaa uuden yksikön tiedostoon."""
+        """Tallentaa uuden yksikön tiedostoon.
+
+        Args:
+            category: Kategorian nimi
+            unit_symbol: Yksikön symboli
+            factor: Muuntokerroin
+        """
         with open(self._file_path, 'a', encoding='utf-8') as file:
             file.write(f"\n{category}:{unit_symbol};{factor}")
+
 #generoitu koodi päättyy

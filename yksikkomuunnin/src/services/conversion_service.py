@@ -5,8 +5,18 @@ class ConversionService:
         self._repository = unit_repository
 
     def convert(self, value, from_unit, to_unit):
-        """
-        Muuntaa arvon yksiköstä toiseen
+        """Muuntaa arvon yksiköstä toiseen.
+
+        Args:
+            value: Muunnettava numeerinen arvo
+            from_unit: Lähtöyksikön symboli (esim. 'm', 'kg')
+            to_unit: Kohdeyksikön symboli (esim. 'ft', 'lb')
+
+        Returns:
+            Muunnettu arvo kohdeyksikössä
+
+        Raises:
+            ValueError: Jos yksikkö on tuntematon tai yksiköt ovat eri kategorioista
         """
         # Tarkista että yksiköt ovat olemassa
         from_category = self._repository.get_unit_category(from_unit)
@@ -18,7 +28,9 @@ class ConversionService:
             raise ValueError(f"Tuntematon yksikkö: '{to_unit}'")
         if from_category != to_category:
             raise ValueError(
-                f"Eri kategorioiden yksiköitä ei voi muuntaa: '{from_unit}' ({from_category}) -> '{to_unit}' ({to_category})")
+                f"Eri kategorioiden yksiköitä ei voi muuntaa: "
+                f"'{from_unit}' ({from_category}) -> '{to_unit}' ({to_category})"
+            )
 
         # Käsittele lämpötilamuunnokset erikseen
         if from_category == 'temp':
@@ -46,10 +58,9 @@ class ConversionService:
         # Muunna celsiuksesta kohdeyksilköön
         if to_unit == 'fahrenheit':
             return celsius * 9/5 + 32
-        elif to_unit == 'kelvin':
+        if to_unit == 'kelvin':
             return celsius + 273.15
-        else:  # celsius
-            return celsius
+        return celsius
 
     def get_supported_units(self, category=None):
         """Palauttaa tuetut yksiköt kategoriittain."""

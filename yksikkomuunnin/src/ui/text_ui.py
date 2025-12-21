@@ -1,8 +1,21 @@
 # generoitu koodi alkaa
 class TextUI:
-    """Sovelluksen tekstipohjainen käyttöliittymä."""
+    """Sovelluksen tekstipohjainen käyttöliittymä.
+
+    Attributes:
+        _service: ConversionService-olio yksikkömuunnoksiin
+        _repository: UnitRepository-olio yksikkötietojen hallintaan
+        _logger: HistoryLogger-olio lokitiedoston käsittelyyn
+    """
 
     def __init__(self, conversion_service, unit_repository, history_logger=None):
+        """Alustaa käyttöliittymän.
+
+        Args:
+            conversion_service: ConversionService-olio
+            unit_repository: UnitRepository-olio
+            history_logger: HistoryLogger-olio (valinnainen)
+        """
         self._service = conversion_service
         self._repository = unit_repository
         self._logger = history_logger
@@ -46,7 +59,11 @@ class TextUI:
                     self._logger.log_error(command_input, "Virheellinen komento")
 
     def _handle_list_command(self, command_input):
-        """Käsittelee list-komennon."""
+        """Käsittelee list-komennon ja tulostaa tuetut yksiköt.
+
+        Args:
+            command_input: Käyttäjän syöttämä komento
+        """
         parts = command_input.split()
 
         if len(parts) == 1:  # Vain "list"
@@ -72,15 +89,19 @@ class TextUI:
                     'temp': 'lämpötilayksiköt',
                     'time': 'aikayksiköt'
                 }
-                print(
-                    f"Tuetut {category_names.get(category, category + '-yksiköt')}: {', '.join(sorted(units))}")
+                unit_type = category_names.get(category, category + '-yksiköt')
+                print(f"Tuetut {unit_type}: {', '.join(sorted(units))}")
             else:
                 print(f"Tuntematon kategoria: {category}")
         else:
             print("Käytä: 'list' tai 'list [kategoria]' (esim. list mass)")
 
     def _handle_conversion(self, parts):
-        """Käsittelee muunnoskomennon."""
+        """Käsittelee muunnoskomennon ja tulostaa tuloksen.
+
+        Args:
+            parts: Lista komennon osista [convert, arvo, yksikkö, to, yksikkö]
+        """
         command = " ".join(parts)
         try:
             value = float(parts[1])
@@ -102,11 +123,16 @@ class TextUI:
                 self._logger.log_error(command, str(e))
 
     def _handle_add_command(self, command_input):
-        """Käsittelee add-komennon uuden yksikön lisäämiseksi."""
+        """Käsittelee add-komennon uuden yksikön lisäämiseksi.
+
+        Args:
+            command_input: Käyttäjän syöttämä komento
+        """
         parts = command_input.split(maxsplit=1)
 
         if len(parts) != 2:
-            print("Käytä: 'add [kategoria]:[yksikkö];[kerroin]' (esim. add length:yard;0.9144)")
+            print("Käytä: 'add [kategoria]:[yksikkö];[kerroin]' "
+                  "(esim. add length:yard;0.9144)")
             return
 
         unit_definition = parts[1]
@@ -124,7 +150,8 @@ class TextUI:
             success = self._repository.add_unit(category, unit_symbol, factor)
 
             if success:
-                print(f"Yksikkö '{unit_symbol}' lisätty kategoriaan '{category}' kertoimella {factor}")
+                print(f"Yksikkö '{unit_symbol}' lisätty kategoriaan "
+                      f"'{category}' kertoimella {factor}")
             else:
                 print(f"Yksikkö '{unit_symbol}' on jo olemassa")
 

@@ -4,10 +4,15 @@ Sovelluksen avulla käyttäjä voi muuntaa arvoja eri mittayksiköiden välillä
 
 ## Dokumentaatio
 
-[Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
-[Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
-[Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
-[Viikon 5 release](https://github.com/4smo/ot-harjoitustyo/releases/tag/viikko5)
+- [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
+- [Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
+- [Käyttöohje](./dokumentaatio/kayttoohje.md)
+- [Testausdokumentti](./dokumentaatio/testaus.md)
+- [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
+
+## Releaset
+
+- [Loppupalautus](https://github.com/4smo/ot-harjoitustyo/releases/tag/loppupalautus)
 
 # Asennus
 

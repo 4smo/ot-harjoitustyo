@@ -44,3 +44,10 @@
   - Rakennekuvaus kerrosarkkitehtuurista
   - Luokkakaavio sovelluksen luokista
   - Sekvenssikaaviot päätoiminnallisuuksista
+
+## Viikko 7
+
+- Parannettu koodin dokumentaatiota
+  - Lisätty docstring-dokumentaatio kaikkiin luokkiin ja metodeihin (Args, Returns, Raises)
+  - Täydennetty ConversionService, UnitRepository ja TextUI -luokkien docstringit
+- Korjattu Pylint-virheitä
